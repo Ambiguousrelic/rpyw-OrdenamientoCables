@@ -26,21 +26,24 @@ void menu(){
 	//-------------- CAMBIO DE NOMBRES --------------
 	
 	int opcion=0;
-	printf("\nPrograma de ordenamiento de cables por alumnos");
-	printf("\n-------------------------------------------------");
+
 	char nombres[10][20] = {"Agustin", "Beatriz", "Carlos", "Daniela", "Eugenio", "Fabiola", "Gustavo", "Hilda", "Ignacio", "Juan"};
  	do{	
-  		printf("\nDesea ingresar los nombres de los 10 alumnos: 1-Si 2-No\nRespuesta:");
+		system("cls");
+		printf("\nPrograma de ordenamiento de cables por alumnos");
+		printf("\n-------------------------------------------------");
+		printf("\nNombres de los alumnos:\n");
+		imprimirNombres(nombres);
+  		printf("\n\nDesea modificar los nombres de los 10 alumnos: 1-Si 2-No\nRespuesta:");
   		scanf("%d",&opcion);
   		getchar();
   		switch (opcion){
 
     		case 1:cargarNombre(nombres);
         		break;
-    		case 2:imprimirNombres(nombres);
-    			break;
+    		case 2:break;
     		default:printf("\nOperacion inexistente\nLas operaciones son entre 1 y 2\n");}
-	}while (opcion!=1 && opcion!=2);
+	}while (opcion!=2);
 	
 	//---------------------------MENU--------------------------
 	
@@ -81,8 +84,11 @@ void imprimirNombres(char nombres[10][20]){
 
 void cargarNombre(char nombres[10][20]){
 	int i,x,y;
+	system("cls");
+	printf("\nIngrese los nombres de los alumnos: ");
+	
 	for(i=0;i<10;i++){
-		printf("\n%d.",i+1);
+		printf("\nAlumno %d: ",i+1);
   		scanf("%s",&nombres[i]);
   		getchar();
 	}
@@ -93,8 +99,8 @@ void cables(){
 	
 }
 void ordenamientoAutomatico(){
-	printf("\n\ordenamientoAutomatico:\n");
+	printf("\n\nordenamientoAutomatico:\n");
 }
 void ordenamientoManual(){
-	printf("\n\ordenamientoManual:\n");
+	printf("\n\nordenamientoManual:\n");
 }
