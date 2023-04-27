@@ -30,9 +30,15 @@ void menu(){
 	int opcion=0;
 	char nombres[10][20] = {"Agustin", "Beatriz", "Carlos", "Daniela", "Eugenio", "Fabiola", "Gustavo", "Hilda", "Ignacio", "Juan"};
 	int cables[10][20];
+	int i, j;
 	InicializarCables(cables);
  	do{	
 		system("cls");
+		for(i=0;i<10;i++){//bucle temporal para comprobar el funcionamiento de InicializarCables(cables)
+			printf("\n");
+			for(j=0;j<20;j++){
+				printf(" %d", cables[i][j]);
+		}}
 		printf("\nPrograma de ordenamiento de cables por alumnos");
 		printf("\n-------------------------------------------------");
 		printf("\nNombres de los alumnos:\n");
@@ -104,7 +110,11 @@ void InicializarCables(int cables[10][20]){
 	for(i=0;i<10;i++){
 		for(j=0;j<20;j++){
 		cables[i][j]=1+rand()%35;
-}}}
+		
+		
+	
+}
+}}
 
 void ImprimirCables(){
 	
