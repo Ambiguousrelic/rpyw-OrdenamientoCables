@@ -9,7 +9,7 @@ Pamela Franco ci 5346389
 
 void cables();
 void menu();
-char cargarNombre();
+void cargarNombre();
 void imprimirNombres();
 void imprimirMenu();
 void ordenamientoAutomatico();
@@ -29,6 +29,9 @@ return 0;
 
 
 void menu(){
+	
+	//-------------- CAMBIO DE NOMBRES --------------
+	
 	int opcion=0;
 	printf("\nPrograma de ordenamiento de cables por alumnos");
 	printf("\n-------------------------------------------------");
@@ -87,20 +90,17 @@ void imprimirNombres(char nombres[10][20]){
 	}
 }
 
-void cargarNombre(){
-	char nombre[20];
+void cargarNombre(char nombres[10][20]){
 	int i,x,y;
 	for(i=0;i<10;i++){
 		printf("\n%d.",i+1);
-  		scanf("%s",&nombre);
+  		scanf("%s",&nombres[i]);
   		getchar();
-		nombres[i]=nombre;
 	}
 	// for(i=0;i<10;i++){
 	// printf("\n%d.%s",i+1,nombres[i]);
 	// }
 
-// return nombres;
 }
 	
 	
