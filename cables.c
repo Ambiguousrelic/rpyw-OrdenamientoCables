@@ -15,18 +15,11 @@ void imprimirMenu();
 void ordenamientoAutomatico();
 void ordenamientoManual();
 
-
 int main(){
 	srand(time(NULL));
 	menu();
 return 0;
 }
-
-
-
-
-
-
 
 void menu(){
 	
@@ -53,13 +46,19 @@ void menu(){
 	
 	opcion=0;
 	do{
-		system("cls");
+		//system("cls");
 		imprimirMenu();
+		printf("\n\nRespuesta:");
+  		scanf("%d",&opcion);
+  		getchar();
 		switch (opcion) {
-			case 1:ordenamientoAutomatico();
+			case 1:ordenamientoManual();
         		break;
-    		case 2:ordenamientoManual();
+    		case 2:ordenamientoAutomatico();
     			break;
+    		case 3: 
+    			printf("\nFin Proceso\n");
+				break;
     		default:printf("\nOpcion Inexistente");
 			}
 	}while(opcion!=3);
@@ -69,7 +68,7 @@ void menu(){
 
 
 void imprimirMenu(){
-	imprimirNombres();
+	//imprimirNombres();
 	
 	printf("\n\nOpciones:\n");
 	printf("\n1-Desea ver los alumnos por separados");
@@ -79,11 +78,7 @@ void imprimirMenu(){
 	
 }
 
-
-
-
 void imprimirNombres(char nombres[10][20]){
-
 	int i,x,y;
 	for(i=0;i<10;i++){
 		printf("\n %d %s",i+1, nombres[i]);
@@ -97,10 +92,6 @@ void cargarNombre(char nombres[10][20]){
   		scanf("%s",&nombres[i]);
   		getchar();
 	}
-	// for(i=0;i<10;i++){
-	// printf("\n%d.%s",i+1,nombres[i]);
-	// }
-
 }
 	
 	
@@ -108,9 +99,12 @@ void cargarNombre(char nombres[10][20]){
 void cables(){
 	
 }
-void ordenamientoAutomatico(){}
-void ordenamientoManual(){}
-
+void ordenamientoAutomatico(){
+	printf("\n\ordenamientoAutomatico:\n");
+}
+void ordenamientoManual(){
+	printf("\n\ordenamientoManual:\n");
+}
 
 
 
