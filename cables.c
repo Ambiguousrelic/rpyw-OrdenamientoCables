@@ -10,7 +10,7 @@ Pamela Franco ci 5346389
 void cables();
 void opciones();
 void cargarNombre();
-
+void ImprimirNombres();
 int main(){
 	srand(time(NULL));
 	opciones();
@@ -30,13 +30,13 @@ void opciones(){
 		{
     		case 1:cargarNombre();
         		break;
-    		case 2:cables();
+    		case 2:ImprimirNombres();
     			break;
     		default:printf("\nOperacion inexistente\nLas operaciones son entre 1 y 2\n");}
-	}while (opcion!=0);	
+	}while (opcion!=1 && opcion!=2);	
 }
 
-void cables(){
+void ImprimirNombres(){
 	char nombres[10][20] = {"Agustin", "Beatriz", "Carlos", "Daniela", "Eugenio", "Fabiola", "Gustavo", "Hilda", "Ignacio", "Juan"};
 	int i,x,y;
 	for(i=0;i<10;i++){
@@ -49,8 +49,12 @@ void cargarNombre(){
 	int i,x,y;
 	for(i=0;i<10;i++){
 		printf("\n%d.",i+1);
-  		scanf("%d",&nombre[i]);
+  		scanf("%s",&nombre[i]);
   		getchar();
-  		printf("\n%d.",i+1,nombre[i]);
 }
+	for(i=0;i<10;i++){
+		printf("\n%d.%s",i+1,nombre[i]);}
+}
+void cables(){
+	
 }
