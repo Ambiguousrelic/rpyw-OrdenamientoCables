@@ -7,11 +7,13 @@ Pamela Franco ci 5346389
 #include <stdlib.h>
 #include <time.h>
 
-void cables();
+
 void menu();
 void cargarNombre();
 void imprimirNombres();
 void imprimirMenu();
+void InicializarCables();
+void ImprimirCables();
 void ordenamientoAutomatico();
 void ordenamientoManual();
 
@@ -26,8 +28,9 @@ void menu(){
 	//-------------- CAMBIO DE NOMBRES --------------
 	
 	int opcion=0;
-
 	char nombres[10][20] = {"Agustin", "Beatriz", "Carlos", "Daniela", "Eugenio", "Fabiola", "Gustavo", "Hilda", "Ignacio", "Juan"};
+	int cables[10][20];
+	InicializarCables(cables);
  	do{	
 		system("cls");
 		printf("\nPrograma de ordenamiento de cables por alumnos");
@@ -48,6 +51,7 @@ void menu(){
 	//---------------------------MENU--------------------------
 	
 	opcion=0;
+	InicializarCables();
 	do{
 		system("cls");
 		imprimirNombres(nombres);
@@ -65,7 +69,8 @@ void menu(){
 				break;
     		default:printf("\nOpcion Inexistente");
 			}
-	}while(opcion!=3);	
+	}while(opcion!=3);
+		
 }
 
 void imprimirMenu(){
@@ -93,14 +98,21 @@ void cargarNombre(char nombres[10][20]){
   		getchar();
 	}
 }
-	
-		
-void cables(){
+
+void InicializarCables(int cables[10][20]){
+	int i,j;
+	for(i=0;i<10;i++){
+		for(j=0;j<20;j++){
+		cables[i][j]=1+rand()%35;
+}}}
+
+void ImprimirCables(){
 	
 }
+
 void ordenamientoAutomatico(){
-	printf("\n\nordenamientoAutomatico:\n");
+	printf("\nordenamientoAutomatico:\n");
 }
 void ordenamientoManual(){
-	printf("\n\nordenamientoManual:\n");
+	printf("\nordenamientoManual:\n");
 }
