@@ -46,7 +46,8 @@ void menu(){
 	
 	opcion=0;
 	do{
-		//system("cls");
+		system("cls");
+		imprimirNombres(nombres);
 		imprimirMenu();
 		printf("\n\nRespuesta:");
   		scanf("%d",&opcion);
@@ -61,21 +62,14 @@ void menu(){
 				break;
     		default:printf("\nOpcion Inexistente");
 			}
-	}while(opcion!=3);
-	
+	}while(opcion!=3);	
 }
 
-
-
 void imprimirMenu(){
-	//imprimirNombres();
-	
 	printf("\n\nOpciones:\n");
 	printf("\n1-Desea ver los alumnos por separados");
 	printf("\n2-Desea ordenarlos a todos");
-	printf("\n3-Salir");
-	
-	
+	printf("\n3-Salir");	
 }
 
 void imprimirNombres(char nombres[10][20]){
@@ -94,8 +88,7 @@ void cargarNombre(char nombres[10][20]){
 	}
 }
 	
-	
-	
+		
 void cables(){
 	
 }
@@ -105,6 +98,3 @@ void ordenamientoAutomatico(){
 void ordenamientoManual(){
 	printf("\n\ordenamientoManual:\n");
 }
-
-
-
