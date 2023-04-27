@@ -51,7 +51,7 @@ void menu(){
 	//---------------------------MENU--------------------------
 	
 	opcion=0;
-	InicializarCables();
+	//InicializarCables();
 	do{
 		system("cls");
 		imprimirNombres(nombres);
@@ -60,7 +60,7 @@ void menu(){
   		scanf("%d",&opcion);
   		getchar();
 		switch (opcion) {
-			case 1:ordenamientoManual();
+			case 1:ordenamientoManual(nombres);
         		break;
     		case 2:ordenamientoAutomatico();
     			break;
@@ -83,7 +83,7 @@ void imprimirMenu(){
 void imprimirNombres(char nombres[10][20]){
 	int i,x,y;
 	for(i=0;i<10;i++){
-		printf("\n %d %s",i+1, nombres[i]);
+		printf("\n%d %s",i+1, nombres[i]);
 	}
 }
 
@@ -113,6 +113,17 @@ void ImprimirCables(){
 void ordenamientoAutomatico(){
 	printf("\nordenamientoAutomatico:\n");
 }
-void ordenamientoManual(){
+void ordenamientoManual(char nombres[10][20]){
+	int op;
+	//system("cls");
+	
 	printf("\nordenamientoManual:\n");
+	imprimirNombres(nombres);
+	
+	do{
+		printf("\nQue alumno desea ver?:\n");
+		scanf("%d",&op);
+  		getchar();
+		printf("\n%d.: %s\n",op, nombres[op-1]);
+	}while(op!=0);
 }
