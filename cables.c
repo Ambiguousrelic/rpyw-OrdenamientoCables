@@ -16,6 +16,7 @@ void InicializarCables();
 void ImprimirCables();
 void ordenamientoAutomatico();
 void ordenamientoManual();
+void OrdenarCables();
 
 int main(){
 	srand(time(NULL));
@@ -34,11 +35,11 @@ void menu(){
 	InicializarCables(cables);
  	do{	
 		system("cls");
-		for(i=0;i<10;i++){//bucle temporal para comprobar el funcionamiento de InicializarCables(cables)
-			printf("\n");
-			for(j=0;j<20;j++){
-				printf(" %d", cables[i][j]);
-		}}
+		// for(i=0;i<10;i++){
+			// printf("\n");
+			// for(j=0;j<20;j++){
+				// printf(" %d", cables[i][j]);
+		// }}
 		printf("\nPrograma de ordenamiento de cables por alumnos");
 		printf("\n-------------------------------------------------");
 		printf("\nNombres de los alumnos:\n");
@@ -106,19 +107,28 @@ void cargarNombre(char nombres[10][20]){
 }
 
 void InicializarCables(int cables[10][20]){
+	//TODO: comprobar que no sean de longitudes iguales
 	int i,j;
 	for(i=0;i<10;i++){
 		for(j=0;j<20;j++){
 		cables[i][j]=1+rand()%35;
-		
-		
-	
+		}
+	}
 }
-}}
 
+//TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
+//EJ: ************ 12
 void ImprimirCables(){
 	
 }
+
+void OrdenarCables(){
+	//- ordenar de menor a mayor
+	//- imprimir cada paso
+	//- guardar cantidad de pasos por alumno
+	//- guardar el alumno con menos y mas pasos
+}
+
 
 void ordenamientoAutomatico(){
 	printf("\nordenamientoAutomatico:\n");
