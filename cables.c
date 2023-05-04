@@ -17,6 +17,8 @@ void ordenamientoAutomatico();
 void ordenamientoManual();
 void ordenarCables();
 int existe();
+void bublesort();
+
 
 int main(){
 	srand(time(NULL));
@@ -137,9 +139,27 @@ int existe(int var, int i,int j,int cables[i][j])
 return 0;
 }
 
+
+void bublesort(int vector[],int n){
+int i,j,aux;
+for (i=0; i<n-1; i++)
+{
+for (j=i+1; j<n; j++)
+  {
+    if(vector[i]>vector[j])
+    {
+     aux = vector[i];
+     vector[i] = vector[j];
+     vector[j] = aux;
+    }
+  }
+}
+}
+
 //TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
 //EJ: ************ 12
 void imprimirCables(int op,int cables[10][20]){
+	//system("cls");
 	int i,x,n;
 		for(i=0;i<20;i++){
 		printf("\n");
@@ -148,15 +168,13 @@ void imprimirCables(int op,int cables[10][20]){
 		printf("*");}
 		printf("%d",cables[op-1][i]);
 		}
-		
 }
 
-void ordenarCables(char nombres[10][20]){
+void ordenarCables(){
 	//- ordenar de menor a mayor
 	//- imprimir cada paso
 	//- guardar cantidad de pasos por alumno
 	//- guardar el alumno con menos y mas pasos
-	
 }
 void ordenamientoAutomatico(){
 	system("cls");
@@ -176,9 +194,43 @@ void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 		scanf("%d",&op);
   		getchar();
 		printf("\n%d.: %s\n",op, nombres[op-1]);
-		// if(op!=0){
-			// ordenarCables(nombres, );
-		// }
-		imprimirCables(op,cables);
-	}while(op!=0);
+
+	}while(!(op<11)&&!(op>0));
+	
+	system("cls");
+	printf("%s\n",nombres[op-1]);
+	imprimirCables(op,cables);
+	
+	op=0;
+	do{
+		printf("\ndesea ordenar (1-Si,2-No)? ");
+		scanf("%d", &op);
+		getchar();
+	}while((op!=1)&&(op!=2));
+	
+	if(op==1){
+		printf("\nFuncion de ordenar cables");
+		scanf("%c");
+	}else{
+		printf("\nNo ordenar");
+		scanf("%c");
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
