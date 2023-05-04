@@ -7,8 +7,6 @@ Pamela Franco ci 5346389
 #include <stdlib.h>
 #include <time.h>
 
-
-
 void menu();
 void cargarNombre();
 void imprimirNombres();
@@ -18,6 +16,7 @@ void imprimirCables();
 void ordenamientoAutomatico();
 void ordenamientoManual();
 void ordenarCables();
+int existe();
 
 int main(){
 	srand(time(NULL));
@@ -68,7 +67,7 @@ void menu(){
   		scanf("%d",&opcion);
   		getchar();
 		switch (opcion) {
-			case 1:ordenamientoManual(nombres);
+			case 1:ordenamientoManual(nombres,cables);
         		break;
     		case 2:ordenamientoAutomatico();
     			break;
@@ -109,18 +108,47 @@ void cargarNombre(char nombres[10][20]){
 
 void inicializarCables(int cables[10][20]){
 	//TODO: comprobar que no sean de longitudes iguales
-	int i,j;
+	int i,j,var;
 	for(i=0;i<10;i++){
 		for(j=0;j<20;j++){
-		cables[i][j]=1+rand()%35;
+		cables[i][j]=0;
+		}
+	}
+	
+	for(i=0;i<10;i++){
+		for(j=0;j<20;j++){
+		do{
+			var=1+rand()%35;
+		}while(existe(var,i,j,cables));
+		cables[i][j]=var;
 		}
 	}
 }
 
+int existe(int var, int i,int j,int cables[i][j])
+{
+		for(j=0;j<20;j++)
+		{
+			if(var==cables[i][j])
+		     {
+		     	return 1; 
+			 }
+		}
+return 0;
+}
+
 //TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
 //EJ: ************ 12
-void imprimirCables(){
-	
+void imprimirCables(int op,int cables[10][20]){
+	int i,x,n;
+		for(i=0;i<20;i++){
+		printf("\n");
+		n=cables[op-1][i];
+		for(x=0;x<n;x++){
+		printf("*");}
+		printf("%d",cables[op-1][i]);
+		}
+		
 }
 
 void ordenarCables(char nombres[10][20]){
@@ -129,28 +157,16 @@ void ordenarCables(char nombres[10][20]){
 	//- guardar cantidad de pasos por alumno
 	//- guardar el alumno con menos y mas pasos
 	
-	
-	
-	
-	
-	
-	
 }
-
-
 void ordenamientoAutomatico(){
 	system("cls");
 	printf("\nordenamientoAutomatico:\n");
 	scanf("%c");
 }
-
-
-
-
-void ordenamientoManual(char nombres[10][20]){
+void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 	system("cls");
 	
-	int op;
+	int op,i;
 	
 	printf("\nordenamientoManual:\n");
 	imprimirNombres(nombres);
@@ -163,18 +179,6 @@ void ordenamientoManual(char nombres[10][20]){
 		// if(op!=0){
 			// ordenarCables(nombres, );
 		// }
+		imprimirCables(op,cables);
 	}while(op!=0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
