@@ -18,6 +18,7 @@ void ordenamientoManual();
 void ordenarCables();
 int existe();
 
+
 int main(){
 	srand(time(NULL));
 	menu();
@@ -140,6 +141,7 @@ return 0;
 //TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
 //EJ: ************ 12
 void imprimirCables(int op,int cables[10][20]){
+	//system("cls");
 	int i,x,n;
 		for(i=0;i<20;i++){
 		printf("\n");
@@ -148,16 +150,8 @@ void imprimirCables(int op,int cables[10][20]){
 		printf("*");}
 		printf("%d",cables[op-1][i]);
 		}
-		
 }
 
-void ordenarCables(char nombres[10][20]){
-	//- ordenar de menor a mayor
-	//- imprimir cada paso
-	//- guardar cantidad de pasos por alumno
-	//- guardar el alumno con menos y mas pasos
-	
-}
 void ordenamientoAutomatico(){
 	system("cls");
 	printf("\nordenamientoAutomatico:\n");
@@ -166,7 +160,7 @@ void ordenamientoAutomatico(){
 void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 	system("cls");
 	
-	int op,i;
+	int op,i,op2;
 	
 	printf("\nordenamientoManual:\n");
 	imprimirNombres(nombres);
@@ -176,9 +170,49 @@ void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 		scanf("%d",&op);
   		getchar();
 		printf("\n%d.: %s\n",op, nombres[op-1]);
-		// if(op!=0){
-			// ordenarCables(nombres, );
-		// }
-		imprimirCables(op,cables);
-	}while(op!=0);
+
+	}while(!(op<11)&&!(op>0));
+	
+	system("cls");
+	printf("%s\n",nombres[op-1]);
+	imprimirCables(op,cables);
+	
+	do{
+		printf("\ndesea ordenar (1-Si,2-No)? ");
+		scanf("%d", &op2);
+		getchar();
+	}while((op2!=1)&&(op2!=2));
+	
+	if(op2==1){
+		ordenarCables(cables,op);
+		scanf("%c");
+	}else{
+		//menu();
+		scanf("%c");
+	}
+	
+}
+
+void ordenarCables(int cables[10][20],int op){
+	//- ordenar de menor a mayor
+	//- imprimir cada paso
+	//- guardar cantidad de pasos por alumno
+	//- guardar el alumno con menos y mas pasos
+	int i,j,aux;
+	op=op-1;
+	for (i=0; i<20-1; i++)
+	{
+	for (j=i+1; j<20; j++)
+	  {
+	    if(cables[op][i]>cables[op][j])
+	    {
+	     aux = cables[op][i];
+	     cables[op][i] = cables[op][j];
+	     cables[op][j] = aux;
+	    }
+	  }
+	}
+	for(i=0;i<20;i++){
+		printf("%d -",cables[op][i]);
+	}
 }
