@@ -70,7 +70,7 @@ void menu(){
 		switch (opcion) {
 			case 1:ordenamientoManual(nombres,cables);
         		break;
-    		case 2:ordenamientoAutomatico();
+    		case 2:ordenamientoAutomatico(cables,nombres);
     			break;
     		case 3: 
     			printf("\nFin Proceso\n");
@@ -152,9 +152,12 @@ void imprimirCables(int op,int cables[10][20]){
 		}
 }
 
-void ordenamientoAutomatico(){
-	system("cls");
+void ordenamientoAutomatico(int cables[10][20],char nombres[10][20]){
+	int i;
 	printf("\nordenamientoAutomatico:\n");
+	for(i=0;i<10;i++){
+		ordenarCables(cables,i+1,nombres);
+	}
 	scanf("%c");
 }
 void ordenamientoManual(char nombres[10][20],int cables[10][20]){
@@ -184,7 +187,7 @@ void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 	}while((op2!=1)&&(op2!=2));
 	
 	if(op2==1){
-		ordenarCables(cables,op);
+		ordenarCables(cables,op,nombres);
 		scanf("%c");
 	}else{
 		//menu();
@@ -193,7 +196,7 @@ void ordenamientoManual(char nombres[10][20],int cables[10][20]){
 	
 }
 
-void ordenarCables(int cables[10][20],int op){
+void ordenarCables(int cables[10][20],int op,char nombres[10][20]){
 	//- ordenar de menor a mayor
 	//- imprimir cada paso
 	//- guardar cantidad de pasos por alumno
@@ -210,15 +213,15 @@ void ordenarCables(int cables[10][20],int op){
 	     aux = cables[op][i];
 	     cables[op][i] = cables[op][j];
 	     cables[op][j] = aux;
-		 system("cls");imprimirCables(op+1,cables);
+		 system("cls");printf("%d-\t%s",i+1,i);imprimirCables(op+1,cables);
 		 acum++;
 	    }
 	  }
 	}
 	printf("\nn de pasos: %d",acum);
-	
-	// if(acum<min){
-		// min=acum;
-	// }
+	/*
+	if(acum<min){
+		min=acum;
+	 }*/
 	
 }
