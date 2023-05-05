@@ -199,6 +199,7 @@ void ordenarCables(int cables[10][20],int op){
 	//- guardar cantidad de pasos por alumno
 	//- guardar el alumno con menos y mas pasos
 	int i,j,aux;
+	int acum=0;
 	op=op-1;
 	for (i=0; i<20-1; i++)
 	{
@@ -209,10 +210,15 @@ void ordenarCables(int cables[10][20],int op){
 	     aux = cables[op][i];
 	     cables[op][i] = cables[op][j];
 	     cables[op][j] = aux;
+		 system("cls");imprimirCables(op+1,cables);
+		 acum++;
 	    }
 	  }
 	}
-	for(i=0;i<20;i++){
-		printf("%d -",cables[op][i]);
-	}
+	printf("\nn de pasos: %d",acum);
+	
+	// if(acum<min){
+		// min=acum;
+	// }
+	
 }
