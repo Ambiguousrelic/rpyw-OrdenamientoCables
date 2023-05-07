@@ -140,7 +140,7 @@ return 0;
 }
 
 //TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
-//EJ: **** 12
+//EJ: ************ 12
 void imprimirCables(int op,int cables[10][20]){
 	//system("cls");
 	int i,x,n;
