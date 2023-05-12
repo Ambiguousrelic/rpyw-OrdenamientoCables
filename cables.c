@@ -2,6 +2,7 @@
 Yessica Fariña ci 5013777
 Ralf Adam ci 5023482
 Pamela Franco ci 5346389
+Werly Ruiz ci 4001158
 */
 #include <stdio.h>
 #include <stdlib.h>
