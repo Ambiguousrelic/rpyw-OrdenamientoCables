@@ -2,12 +2,16 @@
 Yessica Fariña ci 5013777
 Ralf Adam ci 5023482
 Pamela Franco ci 5346389
+Werly Ruiz ci 4001158
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 //#include <unistd.h>
+
+// DECLARAR FUNCIONES
+
 void ordenarNombres();
 void menu();
 void cargarNombre();
@@ -22,10 +26,17 @@ int existe();
 
 
 int main(){
+	// INICILIALIZAR
+// NUMERO RONDOM - rand - S- Seed
+// time la hora y fecha del sistema
+// siempre debe dar valor entero 
 	srand(time(NULL));
 	menu();
 return 0;
 }
+
+
+// VOID NO DEVUELVE NADA 
 
 void menu(){
 	
@@ -67,6 +78,7 @@ void menu(){
 	//---------------------------MENU--------------------------
 	
 	opcion=0;
+	// FUNCION 
 	inicializarCables(cables);
 	do{
 		system("cls");
@@ -80,7 +92,7 @@ void menu(){
         		break;
     		case 2:ordenamientoAutomatico(cables,nombres);
     			break;
-    		case 3: 
+			case 3: 
     			//printf("\nFin Proceso\n");
 				break;
     		default:printf("\nOpcion Inexistente");
@@ -124,7 +136,12 @@ void imprimirNombres(char nombres[10][20]){
 	}
 }
 
-
+void puntoextra(char nombres[10][20]){
+	int i,x,y;
+	for(i=0;i<10;i++){
+		printf("\n%d %s",i+1, nombres[i]);
+	}
+}
 
 
 void ordenarNombres(char vector_texto[10][20])
@@ -152,6 +169,7 @@ void ordenarNombres(char vector_texto[10][20])
 
 void cargarNombre(char nombres[10][20]){
 	int i,x,y;
+	// limpia 
 	system("cls");
 	printf("\nIngrese los nombres de los alumnos: ");
 	
@@ -162,19 +180,26 @@ void cargarNombre(char nombres[10][20]){
 	}
 }
 
+// matriz 10  alumnos y 20 cables y 1 para otros calculos
 void inicializarCables(int cables[10][21]){
 	//TODO: comprobar que no sean de longitudes iguales
 	int i,j,var;
-	for(i=0;i<10;i++){
+	// todo lo que esta dentro del matriz sea igual a 0
+	for(i=0;i<10;i++){ // ascendiendo // i:alumnos // j:cables
 		for(j=0;j<21;j++){
 		cables[i][j]=0;
 		}
 	}
 	
+	// hacer mientras do while
 	for(i=0;i<10;i++){
 		for(j=0;j<20;j++){
 		do{
+			// del 0 al 34 
+			// %35
 			var=1+rand()%35;
+			// rand- random
+		// para que no se repita que haya duplicado de cantidad de cables 
 		}while(existe(var,i,cables));
 		cables[i][j]=var;
 		}
@@ -202,11 +227,12 @@ void imprimirCables(int op,int cables[10][21]){
 		printf("\n");
 		n=cables[op-1][i];
 		for(x=0;x<n;x++){
-		printf("*");}
+		printf("*");} // imprime asteriscos
 		printf("%d",cables[op-1][i]);
 		}
 }
 
+// opcion 2
 void ordenamientoAutomatico(int cables[10][21],char nombres[10][20]){
 	int i;
 	//printf("\nordenamientoAutomatico:\n");
@@ -215,15 +241,21 @@ void ordenamientoAutomatico(int cables[10][21],char nombres[10][20]){
 	}
 	//scanf("%c");
 }
+
+
+// opcion 1 
+// void funcion -- vector de nombre 		matriz de cables
 void ordenamientoManual(char nombres[10][20],int cables[10][21]){
 	system("cls");
-	
+	// op opcion
+	// op2 opcion 2
 	int op,i,op2;
 	imprimirNombres(nombres);
 	
 	printf("\nQue alumno desea ver?: ");
 	scanf("%d",&op);
 	getchar();
+	
 	
 	while((op<1)||(op>10)){
 		printf("\nAlumno inexistente\ningrese un alumno valido: ");
@@ -233,9 +265,12 @@ void ordenamientoManual(char nombres[10][20],int cables[10][21]){
 	}
 	
 	system("cls");
+	// imprime nombre de ----
 	printf("%s\n",nombres[op-1]);
 	imprimirCables(op,cables);
 	
+	
+//desea ordenar si o no 
 	do{
 		printf("\ndesea ordenar (1-Si,2-No)? ");
 		scanf("%d", &op2);
@@ -255,9 +290,12 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
 	//- guardar cantidad de pasos por alumno
 	//- guardar el alumno con menos y mas pasos
 	int i,j,aux;
+	// aux auxiliar 
 	int acum=0;
+	// op - opcion - 1 
+	// empieza desde cero
 	op=op-1;
-	
+	// posicion 20 es posicion 21 cantidad de pasos que fueron utilizados para ordenar los cables
 	if(cables[op][20]>0){
 		system("cls");
 		printf("%d-\t%s\n",op+1, nombres[op]);
@@ -267,7 +305,8 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
 		
 	}else{
 		
-		for (i=0; i<19; i++)
+		// original 
+		/*for (i=0; i<19; i++)
 		{
 		for (j=i+1; j<20; j++)
 		  {
@@ -282,7 +321,55 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
 			}
 			//cables[op][21]=acum;
 		  } 
+		}*/
+		
+		//insertionsort
+		for (i = 1; i < 20; i++)
+		{
+    		int min = cables[op][i];
+    		j = i - 1;
+    		while (j >= 0 && cables[op][j] > min)
+    		{
+        		cables[op][j + 1] = cables[op][j];
+        		j = j - 1; 
+    		}
+    		cables[op][j + 1] = min;
+    		system("cls");
+    		printf("%d-\t%s", op + 1, nombres[op]);
+    		imprimirCables(op + 1, cables);
+    		acum++;
+    		//_sleep(100);
 		}
+		
+		
+		// selectionsort
+/*		for (i = 0; i < 19; i++)
+		{
+    		int min = i;
+    		for (j = i + 1; j < 20; j++)
+    		{
+        		if (cables[op][j] < cables[op][min])
+        		{
+            		min = j;
+        		}
+    		}
+    		if (min != i)
+   	 		{
+        		int temp = cables[op][i];
+        		cables[op][i] = cables[op][min];
+        		cables[op][min] = temp;
+        		system("cls");
+        		printf("%d-\t%s", op + 1, nombres[op]);
+        		imprimirCables(op + 1, cables);
+        		acum++;
+        		//_sleep(100);
+    		}
+    		//cables[op][21]=acum;
+		}	*/
+		
+		
+		
+		
 		cables[op][20]=acum;
 		printf("\nn de pasos: %d",cables[op][20]);
 		//_sleep(1500);	
