@@ -219,7 +219,7 @@ return 0;
 }
 
 //TODO: Representar cada cable con * por cada centímetro y al final de cada cable su longitud representada en unidades.
-//EJ: **** 12
+//EJ: ** 12
 void imprimirCables(int op,int cables[10][21]){
 	//system("cls");
 	int i,x,n;
@@ -301,7 +301,9 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
 		printf("%d-\t%s\n",op+1, nombres[op]);
 		imprimirCables(op+1,cables);
 		printf("\nLos cables del alumno ya fueron ordenados.");
-		_sleep(2000);
+		//_sleep(2000);
+		//scanf("%c");
+		
 		
 	}else{
 		
@@ -324,34 +326,35 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
 		}*/
 		
 		//insertionsort
-		for (i = 1; i < 20; i++)
-		{
-    		int min = cables[op][i];
-    		j = i - 1;
-    		while (j >= 0 && cables[op][j] > min)
-    		{
-        		cables[op][j + 1] = cables[op][j];
-        		j = j - 1; 
-    		}
-    		cables[op][j + 1] = min;
-    		system("cls");
-    		printf("%d-\t%s", op + 1, nombres[op]);
-    		imprimirCables(op + 1, cables);
-    		acum++;
+		// for (i = 1; i < 20; i++)
+		// {
+    		// int min = cables[op][i];
+    		// j = i - 1;
+    		// while (j >= 0 && cables[op][j] > min)
+    		// {
+        		// cables[op][j + 1] = cables[op][j];
+        		// j = j - 1; 
+    		// }
+    		// cables[op][j + 1] = min;
+    		// system("cls");
+    		// printf("%d-\t%s", op + 1, nombres[op]);
+    		// imprimirCables(op + 1, cables);
+    		// acum++;
     		//_sleep(100);
-		}
+		// }
 		
 		
 		// selectionsort
-/*		for (i = 0; i < 19; i++)
+		for (i = 0; i < 19; i++)
 		{
     		int min = i;
     		for (j = i + 1; j < 20; j++)
     		{
         		if (cables[op][j] < cables[op][min])
         		{
-            		min = j;
+            		min = j;acum++;
         		}
+				
     		}
     		if (min != i)
    	 		{
@@ -364,8 +367,9 @@ void ordenarCables(int cables[10][21],int op,char nombres[10][20]){
         		acum++;
         		//_sleep(100);
     		}
+			acum++;
     		//cables[op][21]=acum;
-		}	*/
+		}	
 		
 		
 		
